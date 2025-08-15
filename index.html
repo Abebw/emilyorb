@@ -3,51 +3,180 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emily Orb</title>
-  <meta name="description" content="Contact Emily Orb" />
+  <title>Emily Orb – Gallery</title>
+  <meta name="description" content="Gallery by Emily Orb. Contact: emilywerb@gmail.com" />
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #fff;
-      color: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    main {
-      text-align: center;
-      padding: 10px;
-      max-width: 900px;
-      margin: auto;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      max-height: 80vh;
-    }
-    h2 {
-      margin: 10px 0 15px;
-    }
-    figure {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-    @media (min-width: 768px) {
-      main {
-        padding: 20px;
-      }
-    }
+    :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
+    @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
+    html, body { height: 100%; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); color:var(--fg); display:grid; place-items:center; }
+    main { width:min(960px, 96vw); padding: 8px; text-align:center; }
+    h1 { font-size: clamp(22px, 4vw, 32px); margin: 6px 0 2px; }
+    .notice { color: var(--muted); margin: 2px 0 16px; }
+    figure { margin:0; }
+    img#art { max-width: min(100%, 860px); max-height: 80vh; height:auto; width:auto; border-radius:12px; box-shadow: 0 8px 26px rgba(0,0,0,.16); }
+    .controls { display:flex; gap:10px; justify-content:center; align-items:center; margin-top:12px; flex-wrap:wrap; }
+    .btn { appearance:none; border:1px solid color-mix(in oklab, var(--fg), transparent 80%); background: color-mix(in oklab, var(--fg), transparent 94%); color:var(--fg); border-radius:999px; padding:10px 14px; font-weight:600; cursor:pointer; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
+    .btn:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--fg), transparent 90%); }
+    .btn:focus-visible { outline:3px solid var(--ring); outline-offset:2px; }
+    .meta { margin-top:10px; font-size:14px; color:var(--muted); }
+    .contact { margin: 14px 0 0; }
+    a { color:inherit; }
   </style>
 </head>
 <body>
   <main>
-    <h2></h2>
+    <h1>Emily Orb</h1>
+
     <figure>
-      <img src="sun-portal.jpg" alt="Ink drawing: a small figure walks a bright path between two dark cliffs toward a winking sun; a flame rises behind." />
+      <img id="art" src="sun-portal.jpg" alt="Artwork" decoding="async" />
     </figure>
-    <p><a href="mailto:emilywerb@gmail.com">emilywerb@gmail.com</a></p>
+
+    <div class="controls" aria-label="image navigation controls">
+      <button class="btn" id="prev" aria-label="Previous image">Previous</button>
+      <button class="btn" id="random" aria-label="Random image">Random</button>
+      <button class="btn" id="next" aria-label="Next image">Next</button>
+    </div>
+
+
+    <p class="contact"><a href="mailto:emilywerb@gmail.com">emilywerb@gmail.com</a></p>
   </main>
+
+  <script>
+    const basePath = './6x6/';
+    const images = [
+      'sun-portal.jpg',
+'20240414080033_001.jpg',
+'20240629181304_001.jpg',
+'20240817140659_001.jpg',
+'20240916081210_001.jpg',
+'20240919160600_001.jpg',
+'20240922190205_001.jpg',
+'20240926080515_001.jpg',
+'20240929185509_001.jpg',
+'20241020081257_001.jpg',
+'20241025144132_001.jpg',
+'20241115163610_001.jpg',
+'20241123140905_001.jpg',
+'20241123140905_002.jpg',
+'20241123140905_003.jpg',
+'20241123164820_001.jpg',
+'20241123171224_001.jpg',
+'20241124111845_001.jpg',
+'20241209051556_001.jpg',
+'20241211083905_001.jpg',
+'20250107171003_001.jpg',
+'20250512065947_001.jpg',
+'20250517215700_001.jpg',
+'20250522063057_001.jpg',
+'20250522210251_001.jpg',
+'20250523181134_001.jpg',
+'20250526172546_001.jpg',
+'20250527194543_001.jpg',
+'20250528194826_001.jpg',
+'20250528201322_001.jpg',
+'20250528203924_001.jpg',
+'20250529095211_001.jpg',
+'20250529172325_001.jpg',
+'20250529203607_001.jpg',
+'20250530121655_001.jpg',
+'20250602161428_001.jpg',
+'20250602163311_001.jpg',
+'20250603151725_001.jpg',
+'20250603163052_001.jpg',
+'20250603164158_001.jpg',
+'20250604131748_001.jpg',
+'20250604135525_001.jpg',
+'20250604135525_002.jpg',
+'20250606081759_001.jpg',
+'20250606143824_001.jpg',
+'20250608105930_001.jpg',
+'20250609181237_001.jpg',
+'20250610191912_001.jpg',
+'20250617111304_001.jpg',
+'20250619194059_002.jpg',
+'20250619195105_001.jpg',
+'20250619195105_002.jpg',
+'20250619204013_001.jpg',
+'20250702055300_001.jpg',
+'20250702084526_001.jpg',
+'20250702084526_002.jpg',
+'20250706192528_002.jpg',
+'20250713181316_001.jpg',
+'20250713200025_001.jpg',
+'20250713200025_002.jpg',
+'20250713200308_001.jpg',
+'20250713201544_001.jpg',
+'20250713201544_002.jpg',
+'20250717170332_001.jpg',
+'20250718202523_002.jpg',
+'20250718202523_004.jpg',
+'20250719064530_001.jpg',
+'20250719100822_001.jpg',
+'20250728182039_001.jpg',
+'20250728194741_001.jpg',
+'20250730091044_001.jpg',
+'BADASS MOTHER.jpg',
+'Context Kitt-E.jpg',
+'Context Kitty.jpg',
+'Context Negative Space.jpg',
+'The Lotus Trancends the Muck.jpg'
+
+
+
+      
+      // Add more filenames here
+    ];
+    const titles = [
+      'Sun Portal'
+      // Add more titles here
+    ];
+
+    const imgEl = document.getElementById('art');
+    const capEl = document.getElementById('caption');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const randBtn = document.getElementById('random');
+
+    const params = new URLSearchParams(location.search);
+    let i = Number.parseInt(params.get('i'), 10);
+    if (!Number.isFinite(i) || i < 0 || i >= images.length) i = 0;
+
+    function setImage(idx, push) {
+      if (!images.length) return;
+      i = (idx + images.length) % images.length;
+      const filename = images[i];
+      const title = (titles[i] || filename).replace(/[-_]/g, ' ');
+      imgEl.src = basePath + filename;
+      imgEl.alt = title + ' — artwork by Emily Orb';
+      capEl.textContent = `${i+1} / ${images.length} — ${title}`;
+      const u = new URL(location.href);
+      u.searchParams.set('i', i);
+      (push ? history.pushState : history.replaceState).call(history, { i }, '', u);
+      preload((i + 1) % images.length);
+      preload((i - 1 + images.length) % images.length);
+    }
+
+    function preload(idx){ const p = new Image(); p.src = basePath + images[idx]; }
+    function next(){ setImage(i + 1, true); }
+    function prev(){ setImage(i - 1, true); }
+    function random(){ if (images.length < 2) return; let r; do { r = Math.floor(Math.random() * images.length); } while (r === i); setImage(r, true); }
+
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    randBtn.addEventListener('click', random);
+
+    addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') next(); else if (e.key === 'ArrowLeft') prev(); else if (e.key.toLowerCase() === 'r') random(); });
+
+    let touchX = null;
+    addEventListener('touchstart', (e)=>{ touchX = e.touches[0].clientX; }, {passive:true});
+    addEventListener('touchend', (e)=>{
+      if (touchX == null) return; const dx = e.changedTouches[0].clientX - touchX; touchX = null;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+    }, {passive:true});
+
+    addEventListener('popstate', (e)=>{ const idx = e.state?.i; if (Number.isFinite(idx)) setImage(idx, false); });
+    setImage(i, false);
+  </script>
 </body>
 </html>
