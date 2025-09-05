@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emily Orb (Emily Werb) — Art Gallery</title>
+  <meta name="description" content="Art and gallery of Emily Orb (also known as Emily Werb). Contact: emilywerb@gmail.com" />
+</head>
+<body>
+  <main>
+    <h1>Emily Orb</h1>
+    <p class="notice">Under construction… <em>Also known as <strong>Emily Werb</strong></em></p>
+
+    <div class="row" style="margin-bottom:10px">
+      <select id="set"></select>
+    </div>
+
+    <figure>
+      <img id="art" src="" alt="Artwork by Emily Orb (Emily Werb)" decoding="async" />
+    </figure>
+
+    <div class="controls">
+      <button id="prev">Previous</button>
+      <button id="random">Random</button>
+      <button id="next">Next</button>
+    </div>
+
+    <div class="meta" id="caption"></div>
+
+    <p class="contact">
+      <a href="mailto:emilywerb@gmail.com">emilywerb@gmail.com</a> ·
+      <a href="/emily-werb.html">Emily Werb</a> ·
+      <a href="https://telepathicmoondance.com" target="_blank" rel="noopener">telepathicmoondance.com</a>
+    </p>
+  </main>
+
+  <script>
+    const selectEl = document.getElementById('set');
+    const imgEl = document.getElementById('art');
+    const capEl = document.getElementById('caption');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const randBtn = document.getElementById('random');
+
+    let sets = []; let s = 0; let i = 0;
+
+    function prettify(name){ return name.replace(/[-_]/g,' ').replace(/\.[^.]+$/,''); }
+
+    async function load() {
+      try {
+        const res = await fetch('images.json', { cache: 'no-cache' });
+        const data = await res.json();
+        sets = data.sets || [];
+      } catch(e) {
+        sets = [ { slug:'default', title:'Gallery', basePath:'', items:[ { file:'sun-portal.jpg', title:'Sun Portal' } ] } ];
+      }
+
+      // Auto-build "All Collections"
+      if (sets.length > 1) {
+        const allItems = sets.flatMap(set =>
+          set.items.map(it => ({
+            file: (set.basePath || '') + it.file,
+            title: (set.title ? set.title + ' — ' : '') + (it.title || prettify(it.file))
+          }))
+        );
+        sets.unshift({
+          slug: 'all',
+          title: 'All Collections',
+          basePath: '',
+          items: allItems
+        });
+      }
+
+      selectEl.innerHTML = sets.map((set, idx) => `<option value="${idx}">${set.title || set.slug}</option>`).join('');
+      setImage(0, false);
+    }
+
+    function setImage(idx, push) {
+      const set = sets[s];
+      if (!set || !set.items || !set.items.length) return;
+      i = (idx + set.items.length) % set.items.length;
+      const item = set.items[i];
+      const title = (item.title || prettify(item.file));
+      imgEl.src = (set.basePath || '') + item.file;
+      imgEl.alt = title + ' — artwork by Emily Orb (Emily Werb)';
+      capEl.textContent = `${set.title || set.slug} — ${i+1} / ${set.items.length} — ${title}`;
+    }
+
+    function next(){ setImage(i + 1, true); }
+    function prev(){ setImage(i - 1, true); }
+    function random(){ let r; do { r = Math.floor(Math.random() * sets[s].items.length); } while (r === i); setImage(r, true); }
+
+    selectEl.addEventListener('change', () => { s = parseInt(selectEl.value, 10) || 0; i = 0; setImage(0, true); });
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    randBtn.addEventListener('click', random);
+
+    load();
+  </script>
+</body>
+</html>
