@@ -14,6 +14,13 @@
   <meta name="description" content="Gallery by Emily Orb. Contact: emilywerb@gmail.com" />
   <style>
     :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
+    h1, h3, p, a {
+  text-shadow:
+    -2px -2px 3px black,
+     2px -2px 3px black,
+    -2px  2px 3px black,
+     2px  2px 3px black;
+}
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body { height: 100%; }
     body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:url("./Valentine.PNG") 
@@ -26,13 +33,38 @@
     figure { margin:0; }
     img#art { max-width: min(100%, 860px); max-height: 80vh; height:auto; width:auto; border-radius:12px; box-shadow: 0 8px 26px rgba(0,0,0,.16); }
     .controls { display:flex; gap:10px; justify-content:center; align-items:center; margin-top:12px; flex-wrap:wrap; }
-    .btn { appearance:none; border:1px solid color-mix(in oklab, var(--fg), transparent 80%); background: color-mix(in oklab, var(--fg), transparent 94%); color:var(--fg); border-radius:999px; padding:10px 14px; font-weight:600; cursor:pointer; transition: transform .08s ease, background .2s ease, border-color .2s ease; }
-    .btn:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--fg), transparent 90%); }
-    .btn:focus-visible { outline:3px solid var(--ring); outline-offset:2px; }
+    .btn {
+  appearance:none;
+  border:1px solid color-mix(in oklab, var(--fg), transparent 80%);
+  background: rgba(255,255,255,0.22);      /* frosted, semi-transparent */
+  color:black;
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+
+  backdrop-filter: blur(10px);             /* glass effect inside button */
+  -webkit-backdrop-filter: blur(10px);     /* Safari / iOS */
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.32);      /* a bit brighter on hover */
+}
+
+.btn:focus-visible {
+  outline:3px solid var(--ring);
+  outline-offset:2px;
+}
+
     .meta { margin-top:10px; font-size:14px; color:var(--muted); }
     .contact { margin: 14px 0 0; }
     a { color:inherit; }
-    
+    a {
+  color: inherit;
+}
+
 </style>
 </head>
 <body>
