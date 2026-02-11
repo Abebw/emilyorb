@@ -16,7 +16,10 @@
     :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body { height: 100%; }
-    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); color:var(--fg); display:grid; place-items:center; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:url("Valentine.png") 
+  center/cover 
+  no-repeat 
+  fixed; color:var(--fg); display:grid; place-items:center; }
     main { width:min(960px, 96vw); padding: 8px; text-align:center; }
     h1 { font-size: clamp(22px, 4vw, 32px); margin: 6px 0 2px; }
     .notice { color: var(--muted); margin: 2px 0 16px; }
