@@ -20,25 +20,9 @@
     :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body { height: 100%; }
-   body {
-  margin: 0;
-  font-family: Georgia, serif;
-  background-color: #3E857E;
-  background-image: url("./Road Rainbow 3.jpg");
-  background-position: center bottom;   /* push it down so you see the city/road */
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* note: NO background-attachment here */
-  color: var(--fg);
-  display: grid;
-  place-items: center;
-}
-@media (max-width: 1024px) {
-  body {
-    background-attachment: scroll;  /* turn off fixed on iPad */
-    background-position: center bottom;
-  }
-}
+ body { margin:0; font-family: Georgia, serif; background-color: #3E857E; background:url("./Road Rainbow 3.jpg") 
+  center 80% / cover no-repeat;
+  color:var(--fg); display:grid; place-items:center; }
   h1, h3, p, a {
   text-shadow:
     -2px -2px 3px black,
