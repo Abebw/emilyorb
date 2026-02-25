@@ -11,20 +11,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Emily Orb</title>
+<link rel="icon" type="image/png" href="./favicon-32.png">
+<link rel="shortcut icon" href="./favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <meta name="description" content="Gallery by Emily Orb. Contact: emilywerb@gmail.com" />
   <style>
     :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body { height: 100%; }
-    body {
-  margin:0;
+   body {
+  margin: 0;
   font-family: Georgia, serif;
   background-color: #3E857E;
   background-image: url("./Road Rainbow 3.jpg");
-  background-position: center 80%;
+  background-position: center bottom;   /* push it down so you see the city/road */
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* note: NO background-attachment here */
   color: var(--fg);
   display: grid;
   place-items: center;
@@ -93,9 +97,7 @@ a {
   color: #ffffff;
 }
 </style>
-<link rel="icon" href="./favicon-32.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
 </head>
 
 <body>
