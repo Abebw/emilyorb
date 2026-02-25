@@ -16,9 +16,25 @@
     :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body { height: 100%; }
-    body { margin:0; font-family: Georgia, serif; background-color: #3E857E; background:url("./Road Rainbow 3.jpg") 
-  center 80% / cover no-repeat fixed;
-  color:var(--fg); display:grid; place-items:center; }
+    body {
+  margin:0;
+  font-family: Georgia, serif;
+  background-color: #3E857E;
+  background-image: url("./Road Rainbow 3.jpg");
+  background-position: center 80%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--fg);
+  display: grid;
+  place-items: center;
+}
+@media (max-width: 1024px) {
+  body {
+    background-attachment: scroll;  /* turn off fixed on iPad */
+    background-position: center bottom;
+  }
+}
   h1, h3, p, a {
   text-shadow:
     -2px -2px 3px black,
@@ -69,8 +85,15 @@ transition: transform .08s ease, background .2s ease, color .2s ease;
     a {
   color:white;
 }
+body {
+  color: #ffffff;
+}
 
+a {
+  color: #ffffff;
+}
 </style>
+<link rel="icon" href="./favicon-32.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 </head>
