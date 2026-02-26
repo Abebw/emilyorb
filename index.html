@@ -21,30 +21,24 @@
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body {
   margin: 0;
-  background-color: #000000;  /* same teal as your fallback */
+  background-color: #242424;  /* same teal as your fallback */
   min-height: 100vh;          /* fill the whole screen */
 }
- body { margin:0; font-family: Georgia, serif; background-color: #000000; background:url("./Road Rainbow 3.jpg") 
+ body { margin:0; font-family: Georgia, serif; background-color: #242424;
   center 80% / cover no-repeat;
   color:var(--fg); display:grid; place-items:center; }
-  h1, h3, p, a {
-  text-shadow:
-    -2px -2px 3px black,
-     2px -2px 3px black,
-    -2px  2px 3px black,
-     2px  2px 3px black;
-}
+
     main { width:min(960px, 96vw); padding: 8px; text-align:center; }
-    h1 { font-size: clamp(22px, 4vw, 32px); margin: 6px 0 2px; color:yellow} 
+    h1 { font-size: clamp(22px, 4vw, 32px); margin: 6px 0 2px; color:#00bfa6} 
     .notice { color: var(--muted); margin: 2px 0 16px; }
     figure { margin:0; }
-    img#art { max-width: min(100%, 860px); max-height: 80vh; height:auto; width:auto; border-radius:12px; box-shadow: -2px -2px 3px black, 2px -2px 3px black, -2px 2px 3px black, 2px 2px 3px black; }
+    img#art { max-width: min(100%, 860px); max-height: 80vh; height:auto; width:auto; border-radius:12px; }
     .controls { display:flex; gap:10px; justify-content:center; align-items:center; margin-top:12px; flex-wrap:wrap; }
    .btn {
   appearance:none;
   border:1px solid rgba(0,0,0,0.2);
-  background:#000000;      /* solid white */
-  color:#ffffff;           /* black text */
+  background:#00bfa6;      /* solid white */
+  color:black;           /* black text */
   border-radius:9999px;
   padding:10px 14px;
   font-weight:600;
@@ -57,8 +51,8 @@ transition: transform .08s ease, background .2s ease, color .2s ease;
 
 .btn:hover {
   transform: translateY(-1px);
-  background:#000000;   /* light gray hover */
-  color: yellow;   /* 👈 text color on hover */
+  background: #53B4AA;   /* light gray hover */
+  color: #242424;   /* 👈 text color on hover */
 }
 
 .btn:focus-visible {
@@ -69,12 +63,8 @@ transition: transform .08s ease, background .2s ease, color .2s ease;
     .meta { margin-top:10px; font-size:14px; color:var(--muted); }
     .contact { margin: 14px 0 0; }
 .amp {
-  color: yellow;
-     text-shadow:
-       -2px -2px 3px black,
-     2px -2px 3px black,
-    -2px  2px 3px black,
-     2px  2px 3px black;}
+  color: #00bfa6;
+}
     a {
   color:white;
 }
@@ -92,7 +82,7 @@ a {
 <body>
   <main>
 
-    <h1>Come Explore</h1> 
+    <h1>Emily Orb</h1> 
     <h3>Every Wednesday</h3>
 
     <figure>
