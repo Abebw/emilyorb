@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illustration Work</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: Georgia, serif;
+    }
+
+    .page {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 1.2rem;
+      font-weight: normal;
+      letter-spacing: 0.04em;
+    }
+
+    .gallery {
+      column-width: 320px;
+      column-gap: 18px;
+    }
+
+    .gallery a {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 18px;
+      break-inside: avoid;
+      text-decoration: none;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 0;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .gallery a:hover img {
+      transform: scale(1.01);
+      opacity: 0.96;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      padding: 40px 20px;
+      cursor: zoom-out;
+    }
+
+    .lightbox.open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img {
+      max-width: min(92vw, 1600px);
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      display: block;
+      box-shadow: 0 0 30px rgba(0,0,0,0.45);
+    }
+
+    .close {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 16px 12px 28px;
+      }
+
+      .gallery {
+        column-width: 220px;
+        column-gap: 12px;
+      }
+
+      .gallery a {
+        margin-bottom: 12px;
+      }
+    }
+    .contact {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.contact a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.contact a:hover {
+  opacity: 1;
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 10px;
+  opacity: 0.6;
+}
+
+.nav:hover {
+  opacity: 1;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Illustration Work</h1>
+
+    <div class="gallery">
+      <!-- Duplicate one of these lines for each image -->
+     <a href="illustration\beBhakti Studio.jpg"><img src="illustration\beBhakti Studio.jpg" alt=""></a>
+     <a href="illustration\Shiva Detail.jpg"><img src="illustration\Shiva Detail.jpg" alt=""></a>
+      <a href="illustration\TMD The Portal.png"><img src="illustration\TMD The Portal.png" alt=""></a>
+      <a href="illustration\TMD Smooth.png"><img src="illustration\TMD Smooth.png" alt=""></a>
+      <a href="illustration\SASO Program Cover.png"><img src="illustration\SASO Program Cover.png" alt=""></a>
+      <a href="illustration\TGT Valentine's.PNG"><img src="illustration\TGT Valentine's.PNG" alt=""></a>
+       <a href="illustration\Explore the Day.jpg"><img src="illustration\Explore the Day.jpg" alt=""></a>
+      <a href="illustration\Sticker Amperson Greyscale.png"><img src="illustration\Sticker Amperson Greyscale.png" alt=""></a>
+      <a href="illustration\Burke Bunny's Guide!.png"><img src="illustration\Burke Bunny's Guide!.png" alt=""></a>
+      <a href="illustration\Covid Mask.jpg"><img src="illustration\Covid Mask.jpg" alt=""></a>
+      <a href="illustration\Masks Required.png"><img src="illustration\Masks Required.png" alt=""></a>
+      <a href="illustration\Bawlers.jpg"><img src="illustration\Bawlers.jpg" alt=""></a>
+    </div>
+   <p class="contact">
+  <a href="mailto:emilywerb@gmail.com">Contact Emily</a>
+  </p>
+  </div>
+
+
+    </div>
+  </div>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" id="closeBtn">&times;</button>
+
+  <button class="nav prev" id="prevBtn">&#10094;</button>
+  <img id="lightboxImg" src="">
+  <button class="nav next" id="nextBtn">&#10095;</button>
+</div>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const closeBtn = document.getElementById('closeBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+const links = document.querySelectorAll('.gallery a');
+let currentIndex = 0;
+
+links.forEach((link, index) => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    currentIndex = index;
+    showImage();
+    lightbox.classList.add('open');
+  });
+});
+
+function showImage() {
+  lightboxImg.src = links[currentIndex].href;
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % links.length;
+  showImage();
+}
+
+function prevImage() {
+  currentIndex = (currentIndex - 1 + links.length) % links.length;
+  showImage();
+}
+
+nextBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  nextImage();
+});
+
+prevBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  prevImage();
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+}
+
+lightbox.addEventListener('click', function (e) {
+  if (e.target === lightbox || e.target === closeBtn) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener('keydown', function (e) {
+  if (!lightbox.classList.contains('open')) return;
+
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
+});
+</script>
+
+</body>
+</html>

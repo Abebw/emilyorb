@@ -17,6 +17,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <meta name="description" content="Gallery by Emily Orb. Contact: emilywerb@gmail.com" />
   <style>
+
+
     :root { --fg:#111; --bg:#fff; --muted:#666; --ring:#7c3aed; }
     @media (prefers-color-scheme: dark){ :root{ --fg:#f3f3f3; --bg:#0b0b0b; --muted:#b3b3b3; } }
     html, body {
@@ -79,15 +81,135 @@ a {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+.submenu-wrapper {
+  position: relative;
+}
+
+.submenu-toggle {
+  display: block;
+  width: 100%;
+  color: white;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 12px;
+  cursor: pointer;
+ font: inherit;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  background: rgba(0,0,0,0.95);
+  padding: 10px;
+  border-radius: 8px;
+ 
+}
+
+
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  background: rgba(0,0,0,0.85);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+.menu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+.submenu a {
+  white-space: nowrap;
+}
+.hamburger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.hamburger .icon {
+  font-size: 28px;
+}
+
+.hamburger .label {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+@media (max-width: 600px) {
+  .hamburger .label {
+    display: none;
+  }
+}
+.menu-container {
+  position: absolute;
+  top: 20px;
+  right: clamp(20px, 6vw, 80px);
+  z-index: 1000;
+}
 </style>
 
 </head>
 
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+</script>
+
 <body>
+<div class="menu-container">
+  <div class="hamburger" onclick="toggleMenu()">
+  <span class="icon">☰</span>
+  <span class="label">Menu</span>
+</div>
+
+  <div id="dropdownMenu" class="menu">
+    <a href="illustration.html" target="_blank">Illustration Work</a>
+
+    <div class="submenu-wrapper">
+      <button class="submenu-toggle" onclick="toggleCollaborators(event)">
+        Explore Friends
+      </button>
+
+      <div id="collabMenu" class="submenu">
+        <a href="https://www.telepathicmoondance.com/" target="_blank">🌙 TMD</a>
+        <a href="https://www.givingtrees.org/" target="_blank">🌳 TGT</a>
+        <a href="https://www.anchorturtle.com/" target="_blank">🃏 JestR</a>
+        <a href="https://www.amparocreativehouse.com/" target="_blank">🏠 Celeste</a>
+      
+          </div>
+  <a href="mailto:emilywerb@gmail.com">Contact Emily</a>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
   <main>
 
     <h1>Emily Orb</h1> 
-    <h3>Every Wednesday (Away 4/1)</h3>
+    <h3>Every Wednesday</h3>
 
     <figure>
       <img id="art" src="Take Me Children.jpg" alt="Artwork" decoding="async" />
@@ -103,27 +225,16 @@ a {
 <p class="contact">
   <a href="mailto:emilywerb@gmail.com">Contact Emily</a>
 </p>
-
-<p>
-  <span class="amp">Explore:</span>
-  <a href="https://telepathicmoondance.bandcamp.com/album/the-portal"
-     target="_blank" rel="noopener">🚪The Portal</a>
-  
-  <a href="https://www.givingtrees.org/"
-     target="_blank" rel="noopener">🌳Giving Trees</a>
-  
-  <a href="https://www.anchorturtle.com/"
-     target="_blank" rel="noopener">🃏 JestR</a>
-
-  <a href="https://www.amparocreativehouse.com/"
-     target="_blank" rel="noopener">🏠 Celeste</a>
-</p>
   </main>
 
   <script>
     const basePath = './6x6/';
     const images = [
 
+"QWERTY.jpg",
+"Transmute.jpg",
+"So Kute.jpg",
+"Fat Baby.jpg",
 "Milk Please.jpg",
 "Navigation.jpg",
 "I LOVE YOU.jpg",
@@ -493,5 +604,13 @@ a {
     addEventListener('popstate', (e)=>{ const idx = e.state?.i; if (Number.isFinite(idx)) setImage(idx, false); });
     setImage(i, false);
   </script>
+  <script>
+function toggleCollaborators(event) {
+  event.stopPropagation();
+  const submenu = document.getElementById("collabMenu");
+  submenu.style.display =
+    submenu.style.display === "block" ? "none" : "block";
+}
+</script>
 </body>
 </html>
