@@ -167,6 +167,15 @@ a {
   right: clamp(20px, 6vw, 80px);
   z-index: 1000;
 }
+
+h1 a {
+  color: #00bfa6;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  opacity: 0.85;
+}
 </style>
 
 </head>
@@ -208,7 +217,7 @@ function toggleMenu() {
 </div>
   <main>
 
-    <h1>Emily Orb</h1> 
+ <h1><a href="index.html" id="homeLink">Emily Orb</a></h1>
     <h3>Every Wednesday</h3>
 
     <figure>
@@ -580,7 +589,9 @@ function toggleMenu() {
       const title = (titles[i] || filename).replace(/[-_]/g, ' ');
       imgEl.src = basePath + filename;
       imgEl.alt = title + ' — artwork by Emily Orb';
-      capEl.textContent = `${i+1} / ${images.length} — ${title}`;
+     if (capEl) {
+  capEl.textContent = `${i+1} / ${images.length} — ${title}`;
+}
       const u = new URL(location.href);
       u.searchParams.set('i', i);
       (push ? history.pushState : history.replaceState).call(history, { i }, '', u);
@@ -596,6 +607,7 @@ function toggleMenu() {
     nextBtn.addEventListener('click', next);
     prevBtn.addEventListener('click', prev);
     randBtn.addEventListener('click', random);
+
 
     addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') next(); else if (e.key === 'ArrowLeft') prev(); else if (e.key.toLowerCase() === 'r') random(); });
 
