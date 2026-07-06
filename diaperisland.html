@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diaper Island | Emily Orb</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#f8f7f3;
+    color:#222;
+    line-height:1.7;
+}
+
+header{
+    text-align:center;
+    padding:45px 20px 20px;
+}
+
+header h1{
+    margin:0;
+    font-size:2.6rem;
+}
+
+header p{
+    font-size:1.2rem;
+    margin-top:18px;
+}
+
+a{
+    color:#444;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:grid;
+    grid-template-columns:40% 60%;
+    gap:50px;
+    align-items:start;
+}
+
+.cover img{
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+}
+
+.content{
+    font-size:1.15rem;
+}
+
+audio{
+    width:100%;
+    margin:25px 0 35px;
+}
+
+.bottom{
+    max-width:1200px;
+    margin:60px auto;
+    padding:20px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.gallery img{
+    width:100%;
+    display:block;
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
+}
+
+footer{
+    text-align:center;
+    padding:50px 20px;
+    color:#666;
+}
+
+.gallery img.cover-mobile{
+    display:none;
+}
+
+@media (max-width:900px){
+
+.container{
+    grid-template-columns:1fr;
+}
+
+.cover{
+    display:none;
+}
+
+.gallery{
+    grid-template-columns:1fr;
+}
+
+.gallery img.cover-mobile{
+    display:block;
+}
+
+header h1{
+    font-size:2rem;
+}
+
+header p{
+    font-size:1.05rem;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Diaper Island is out now!</h1>
+
+<p>
+To order,
+<a href="https://account.venmo.com/u/emilyorb" target="_blank">
+    <strong>Venmo @emilyorb</strong>
+</a>
+<strong>$20</strong> and tell me where to send it. 😘
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="cover">
+
+<img src="illustration\Diaper Island.png" alt="Diaper Island book cover">
+
+</div>
+
+<div class="content">
+
+<audio controls>
+    <source src="Diaper Island\Partty Time.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<p>
+Here's me singing to my son as I taught him to use the potty.
+The song morphed into a bedtime story and, with the help of his older brother, into an action adventure equipped with 3D models sculpted from his original drawings.
+</p>
+
+<p>
+Why did we put in this kind of hand-drawn effort in a world with AI? Why do I have no qualms about vibe coding this website?
+I don't know. I believe in drawing.
+Anywho, this was fun, and we made something together.
+</p>
+
+<p>
+We laughed about poop, and I hope it helps you potty train your child.
+</p>
+
+<p>
+And if your kid already knows how to use the potty, as Lewis says, it'll help you
+<strong>"feel free, if you're stuck or something."</strong>
+</p>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+<div class="gallery">
+
+    <img src="illustration/Diaper Island.png"
+         class="cover-mobile"
+         alt="Diaper Island cover">
+
+    <img src="Diaper Island\Day.png"
+         alt="Potty Monsters in Pen">
+
+    <img src="Diaper Island\Night.png"
+         alt="Potty Monsters in 3D">
+
+</div>
+
+</div>
+
+<footer>
+
+© Emily Orb
+
+</footer>
+
+</body>
+</html>
