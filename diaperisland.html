@@ -7,8 +7,49 @@
 <title>Diaper Island | Emily Orb</title>
 
 <style>
+
+    .content p{
+    margin:1.1rem 0;
+}
+
+.content p:first-of-type{
+    margin-top:0;
+}
+
 *{
     box-sizing:border-box;
+}
+
+.hero{
+    max-width:1200px;
+    margin:0 auto;
+    padding:45px 20px 20px;
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.hero-text{
+    text-align:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:2.6rem;
+}
+
+.hero p{
+    margin-top:18px;
+    font-size:1.2rem;
+}
+
+.hero-gif img{
+    width:100%;
+    max-width:420px;
+    display:block;
+    margin:auto;
 }
 
 body{
@@ -35,7 +76,7 @@ header p{
 }
 
 a{
-    color:#444;
+    color:LinkText;
 }
 
 .home-link{
@@ -81,7 +122,7 @@ a{
 
 audio{
     width:100%;
-    margin:25px 0 35px;
+    margin:10px 0 8px;
 }
 
 .bottom{
@@ -115,6 +156,63 @@ footer{
 
 @media (max-width:900px){
 
+
+
+header p,
+.home-link p{
+    margin:0;
+    line-height:1.2;
+}
+
+header p + p,
+
+.home-link{
+    text-align:center;
+    margin:8px 15px 10px;
+}
+
+.home-link p{
+    margin:0;
+    line-height:1.2;
+}
+
+
+header h1{
+    margin-bottom:.2rem;
+    line-height:1.15;
+}
+
+header p{
+    margin:.15rem 0;
+    line-height:1.15;
+}
+
+.home-link{
+    margin:10px 15px 15px;
+}
+
+.home-link p{
+    margin:.2rem 0;
+    line-height:1.2;
+}
+
+.home-button{
+    font-size:1.5rem;
+}
+
+    .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.hero-gif{
+    order:2;
+}
+
+.hero-text{
+    order:1;
+}
+
 .container{
     grid-template-columns:1fr;
 }
@@ -147,28 +245,31 @@ header p{
 
 <body>
 
-<header>
+<header class="hero">
 
-<p>Trapped on Diaper Island? Click
-<a href="https://emilyorb.com" class="home-button">Home</a>
-and go!
-</p>
+    <div class="hero-text">
 
-Gif of making gotta go
+        <h1>Diaper Island is out now!</h1>
 
+        <p>
+        To order,
+        <a href="https://account.venmo.com/u/emilyorb" target="_blank">
+            <strong>Venmo @emilyorb</strong>
+        </a>
+        <strong>$20</strong> and tell me where to send it. 😘
+        </p>
+        Trapped on Diaper Island?
+        Go <a href="https://emilyorb.com">Home</a>.
+        </p>
 
-<h1>Diaper Island is out now!</h1>
+    </div>
 
-<p>
-
-To order,
-<a href="https://account.venmo.com/u/emilyorb" target="_blank">
-    <strong>Venmo @emilyorb</strong>
-</a>
-<strong>$20</strong> and tell me where to send it. 😘
-</p>
+    <div class="hero-gif">
+        <img src="Diaper Island\Gotta Go - Emily Orb.gif" alt="I Really Gotta Go!">
+    </div>
 
 </header>
+
 
 <div class="container">
 
@@ -188,6 +289,10 @@ To order,
 <p>
 Here's me singing to my son as I taught him to use the potty.
 The song morphed into a bedtime story and, with the help of his older brother, into an action adventure equipped with 3D models sculpted from his original drawings.
+</p>
+
+<p>
+Like, what if the only diaper around was forever clean, where would you go? That's the question on Diaper Island.
 </p>
 
 <p>
