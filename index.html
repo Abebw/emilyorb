@@ -645,8 +645,6 @@ function toggleMenu() {
       const u = new URL(location.href);
       u.searchParams.set('i', i);
       (push ? history.pushState : history.replaceState).call(history, { i }, '', u);
-      preload((i + 1) % images.length);
-      preload((i - 1 + images.length) % images.length);
     }
 
     function preload(idx){ const p = new Image(); p.src = basePath + images[idx]; }
