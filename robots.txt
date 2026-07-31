@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /2022/
+Disallow: /2023/
+Disallow: /6x6/
+Disallow: /Diaper Island/
+Disallow: /First Draft/
+Disallow: /illustration/
